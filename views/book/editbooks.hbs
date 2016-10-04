@@ -1,0 +1,62 @@
+<section class='edit-book'>
+  <form class="edit-book" action="/books/edit/{{data.id}}" method="post">
+
+    <div class="title">
+      <div>
+        <label for="book-title">Title</label>
+      </div>
+      <div>
+        <textarea name="title" rows="1" cols="100">
+          {{data.title}}
+        </textarea>
+      </div>
+    </div>
+
+    <div class="author">
+      <div>
+        <label for="book-author">Author</label>
+      </div>
+      <div>
+        <textarea name="author" rows="1" cols="100">
+          {{data.author}}
+        </textarea>
+      </div>
+    </div>
+
+    <div class="genre">
+      <div>
+        <label for="book-genre">Genre</label>
+      </div>
+      <div>
+        <textarea name="genre" rows="1" cols="100">
+          {{data.genre}}
+        </textarea>
+      </div>
+    </div>
+
+    <div class="cover_url">
+      <div>
+        <label for="book-cover_url">Cover Image URL</label>
+      </div>
+      <div>
+        <textarea name="cover_url" rows="1" cols="100">
+          {{data.cover_url}}
+        </textarea>
+      </div>
+    </div>
+
+    <div class="description">
+      <div>
+        <label for="book-description">Description</label>
+      </div>
+      <div>
+        <textarea name="description" rows="6" cols="100">
+          {{data.description}}
+        </textarea>
+      </div>
+    </div>
+    <div>
+      <input type="submit" value="Update Book">
+    </div>
+  </form>
+</section>

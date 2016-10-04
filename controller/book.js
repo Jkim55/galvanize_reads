@@ -50,8 +50,21 @@ router.get('/add', function(req, res, next) {
 });
 
 router.post('/add', function(req, res, next) {
-  console.log(req.body);
   bookModel.addBook(req.body)
+  .then (() => {
+    res.redirect('/books')
+  })
+});
+
+router.get('/edit/:id', function(req, res, next) {
+  bookModel.getSingleBook(req.params.id)
+  .then ((data) => {
+    res.render('book/editbooks',{data:data});
+  })
+});
+
+router.post('/edit/:id', function(req, res, next) {
+  bookModel.editBook(req.params.id, req.body)
   .then (() => {
     res.redirect('/books')
   })

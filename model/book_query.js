@@ -29,6 +29,17 @@ function addBook(bookInfo) {
     .insert(bookInfo)
 }
 
+function editBook(bookID, bookInfo) {
+  return knex('book')
+    .where('id', bookID)
+    .update({
+      'title': bookInfo.title,
+      'genre': bookInfo.genre,
+      'cover_url': bookInfo.cover_url,
+      'description': bookInfo.description
+    })
+}
+
 function deleteBook(bookID) {
   return knex('book')
     .where('id', bookID)
@@ -40,5 +51,6 @@ module.exports = {
   getSingleBook: getSingleBook,
   getAuthorsByBookID: getAuthorsByBookID,
   addBook: addBook,
+  editBook:editBook,
   deleteBook: deleteBook
 }
