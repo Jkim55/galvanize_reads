@@ -1,0 +1,21 @@
+<section class='display-all-book'>
+    {{#each book}}
+    <div class='single-book'>
+      <button type="button" name="button" href = >Edit</button>
+      <button type="button" name="button">Delete</button>
+      <h3>{{this.title}} -
+        {{#each authorlist}}
+          {{#if @last}}
+            {{firstname}} {{lastname}}
+          {{else}}
+            {{firstname}} {{lastname}} | 
+          {{/if}}
+        {{/each}}
+      </h3>
+      <img src="{{this.cover_url}}" alt="" />
+      <p>ID: {{this.id}}</p>
+      <p>Genre: <span>{{this.genre}}</span></p>
+      <p>Description: <span>{{this.description}}</span></p>
+    </div>
+    {{/each}}
+</section>
