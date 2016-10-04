@@ -45,9 +45,27 @@ router.get('/view/:id', function(req, res, next) {
   })
 });
 
-router.get('/add/new', function(req, res, next) {
+router.get('/add', function(req, res, next) {
     res.render('book/addbooks');
 });
 
+router.post('/add', function(req, res, next) {
+  console.log(req.body);
+  bookModel.addBook(req.body)
+  .then (() => {
+    res.redirect('/books')
+  })
+});
+
+router.get('/delete/:id', function(req, res, next) {
+  bookModel.deleteBook(req.params.id)
+  .then(() => {
+    res.redirect('/books')
+  })
+  .catch((err) => {
+    console.error('Error caught in deleting post from DB')
+    next(err)
+  })
+});
 
 module.exports = router;

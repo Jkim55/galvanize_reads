@@ -24,9 +24,21 @@ function getAuthorsByBookID(bookID) {
   .where('book.id', bookID)
 }
 
+function addBook(bookInfo) {
+  return knex('book')
+    .insert(bookInfo)
+}
+
+function deleteBook(bookID) {
+  return knex('book')
+    .where('id', bookID)
+    .del()
+}
 
 module.exports = {
   getAllBooks: getAllBooks,
   getSingleBook: getSingleBook,
-  getAuthorsByBookID: getAuthorsByBookID
+  getAuthorsByBookID: getAuthorsByBookID,
+  addBook: addBook,
+  deleteBook: deleteBook
 }
