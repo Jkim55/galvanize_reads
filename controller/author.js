@@ -4,6 +4,8 @@ const express = require('express');
 const router = express.Router();
 
 const authorModel = require('../model/author_query')
+const bookModel = require('../model/book_query')
+
 
 router.get('/', (req, res, next) =>{
   authorModel.getAllAuthors()
@@ -13,9 +15,17 @@ router.get('/', (req, res, next) =>{
 })
 
 router.get('/view/:id', (req, res, next) => {
-  authorModel.getSingleAuthor(req.params.id)
-    .then((author) => {
-      res.render('authors/singleauthor', {author:author})
+  let author = authorModel.getSingleAuthor(req.params.id)
+  let books = bookModel.getBooksByAuthorID(req.params.id)
+    // .then((data) =>{
+    //   console.log(data);
+    // })
+  Promise.all([author, books])
+    .then((authorInfo) => {
+      res.render('authors/singleauthor', {
+        author:authorInfo[0],
+        books:authorInfo[1]
+      })
     })
 })
 
@@ -33,7 +43,6 @@ router.post('/add', (req, res, next) => {
 router.get('/edit/:id', (req, res, next) => {
   authorModel.findAuthor(req.params.id)
   .then((author) => {
-    console.log(author);
     res.render('authors/editauthor', {author:author})
   })
 })

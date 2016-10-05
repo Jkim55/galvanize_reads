@@ -1,41 +1,27 @@
-  <form class="add-book m-t-3" action="/authors/edit/{{author.id}}" method="post">
-    <div class="author_first_name">
-      <div>
-        <label for="first_name">First Name</label>
-      </div>
-      <div>
-        <input type="text" class="form-control" name='first_name' placeholder="First Name"  value={{author.first_name}}>
-      </div>
-    </div>
-    <div class="last_name">
-      <div>
-        <label for="author-last_name">Last Name</label>
-      </div>
-      <div>
-        <input type="text" class="form-control" name='last_name' placeholder="Last Name" value={{author.last_name}}>
-      </div>
-    </div>
+<!-- /authors/edit/:id -->
 
-    <div class="portrait_url">
-      <div>
-        <label for="portrait_url">Portrait Image URL</label>
-      </div>
-      <div>
-        <input type="text" class="form-control" name='portrait_url' placeholder="Portrait URL" value={{author.portrait_url}}>
-      </div>
-    </div>
+<form class="add-book m-t-3" action="/authors/edit/{{author.id}}" method="post">
+  <div class="author_first_name">
+    <label for="first_name">First Name</label>
+    <input type="text" class="form-control" name='first_name' placeholder="First Name"  value="{{author.first_name}}">
+  </div>
+  <div class="last_name">
+    <label for="author-last_name">Last Name</label>
+    <input type="text" class="form-control" name='last_name' placeholder="Last Name" value="{{author.last_name}}">
+  </div>
 
-    <div class="bio">
-      <div>
-        <label for="author-bio">Author/label>
-      </div>
-      <div>
-        <input type="text" class="form-control" name='bio' placeholder="Bio" value={{author.bio}}>
-      </div>
-    </div>
+  <div class="portrait_url">
+    <label for="portrait_url">Portrait Image URL</label>
+    <input type="text" class="form-control" name='portrait_url' placeholder="Portrait URL" value="{{author.portrait_url}}">
+  </div>
 
-    <br>
-    <div>
-      <input class="btn btn-info longbtn" type="submit" value="Add Author">
-    </div>
-  </form>
+  <div class="bio">
+    <label for="author-bio">Author</label>
+    <input type="text" class="form-control" name='bio' placeholder="Bio" value="{{author.bio}}">
+  </div>
+
+  <br>
+  <div>
+    <input class="btn btn-info longbtn" type="submit" value="Add Author">
+  </div>
+</form>

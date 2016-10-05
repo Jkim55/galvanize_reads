@@ -12,17 +12,6 @@ function getSingleBook(bookID) {
     .where('id', bookID).first()
 }
 
-function getAuthorsByBookID(bookID) {
-  return knex('book')
-  .join('author_book','author_book.book_id', 'book.id')
-  .join('author', 'author.id', 'author_book.author_id')
-  .select(
-    'author.id as authorID',
-    'author.first_name as firstname',
-    'author.last_name as lastname'
-  )
-  .where('book.id', bookID)
-}
 
 function addBook(bookInfo) {
   return knex('book')
@@ -46,9 +35,33 @@ function deleteBook(bookID) {
     .del()
 }
 
+function getBooksByAuthorID(authID) {
+  return knex('author')
+    .join('author_book', 'author_book.author_id', 'author.id')
+    .join('book', 'book.id', 'author_book.book_id')
+    .select(
+      'book.id as bookID',
+      'book.title as bookTitle'
+    )
+    .where('author.id', authID)
+}
+
+function getAuthorsByBookID(bookID) {
+  return knex('book')
+  .join('author_book','author_book.book_id', 'book.id')
+  .join('author', 'author.id', 'author_book.author_id')
+  .select(
+    'author.id as authorID',
+    'author.first_name as firstname',
+    'author.last_name as lastname'
+  )
+  .where('book.id', bookID)
+}
+
 module.exports = {
   getAllBooks: getAllBooks,
   getSingleBook: getSingleBook,
+  getBooksByAuthorID: getBooksByAuthorID,
   getAuthorsByBookID: getAuthorsByBookID,
   addBook: addBook,
   editBook: editBook,

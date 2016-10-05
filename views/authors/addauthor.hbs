@@ -1,41 +1,24 @@
-  <form class="add-book m-t-3" action="/authors/add" method="post">
-    <div class="author_first_name">
-      <div>
-        <label for="first_name">First Name</label>
-      </div>
-      <div>
-        <input type="text" class="form-control" name='first_name' placeholder="First Name">
-      </div>
-    </div>
-    <div class="last_name">
-      <div>
-        <label for="author-last_name">Last Name</label>
-      </div>
-      <div>
-        <input type="text" class="form-control" name='last_name' placeholder="Last Name">
-      </div>
-    </div>
+<!-- /authors/add -->
 
-    <div class="portrait_url">
-      <div>
-        <label for="portrait_url">Portrait Image URL</label>
-      </div>
-      <div>
-        <input type="text" class="form-control" name='portrait_url' placeholder="Portrait URL">
-      </div>
-    </div>
-
-    <div class="bio">
-      <div>
-        <label for="author-bio">Author/label>
-      </div>
-      <div>
-        <input type="text" class="form-control" name='bio' placeholder="Bio">
-      </div>
-    </div>
-
-    <br>
-    <div>
-      <input class="btn btn-info longbtn" type="submit" value="Add Author">
-    </div>
-  </form>
+<form class="add-book m-t-3" action="/authors/add" method="post">
+  <div class= "first_name">
+    <label for="first_name">First Name</label>
+    <input type="text" class="form-control" name='first_name' placeholder="First Name">
+  </div>
+  <div class= "last_name">
+    <label for="author-last_name">Last Name</label>
+    <input type="text" class="form-control" name='last_name' placeholder="Last Name">
+  </div>
+  <div class= "portrait_url">
+    <label for="portrait_url">Portrait Image URL</label>
+    <input type="text" class="form-control" name='portrait_url' placeholder="Portrait URL">
+  </div>
+  <div class="bio">
+    <label for="author-bio">Author</label>
+    <input type="text" class="form-control" name='bio' placeholder="Bio">
+  </div>
+  <br>
+  <div>
+    <input class="btn btn-info longbtn" type="submit" value="Add Author">
+  </div>
+</form>
