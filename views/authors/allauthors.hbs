@@ -1,0 +1,15 @@
+<div class="display-all-authors">
+  {{#each author}}
+  <div class='row m-b-3 m-t-3'>
+    <div class="col-xs-4 test">
+      <img class="authors img-fluid" src="{{this.portrait_url}}" alt="" />
+    </div>
+    <div class="col-xs-6">
+      <h4>{{this.first_name}} {{this.last_name}}</h4>
+      <p>{{this.bio}}</p>
+      <a class="btn btn-primary btn-sm" href="/authors/view/{{this.id}}">View Author Details</a>
+    </div>
+  </div>
+  {{/each}}
+  <a class="btn btn-secondary btn-lg" href="/authors/add">Add An Author</a>
+</div>

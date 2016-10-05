@@ -30,13 +30,16 @@ router.get('/', (req, res, next) => {
   })
 })
 
+
 // view a single book
 router.get('/view/:id', function(req, res, next) {
-  bookModel.getSingleBook(req.params.id)
-  .then((book) => {
-    console.log(book);
+  let book = bookModel.getSingleBook(req.params.id)
+  let authors = bookModel.getAuthorsByBookID(req.params.id)
+  Promise.all([book,authors])
+  .then((bookInfo) => {
     res.render('book/singlebook', {
-      book: book
+      book: bookInfo[0],
+      authors: bookInfo[1]
     });
   })
   .catch((err) => {
@@ -56,10 +59,10 @@ router.post('/add', function(req, res, next) {
   })
 });
 
-router.get('/edit/:id', function(req, res, next) {
-  bookModel.getSingleBook(req.params.id)
+router.get('/edit/:id', function (req, res, next) {
+  bookModel.getSingleBook (req.params.id)
   .then ((data) => {
-    res.render('book/editbooks',{data:data});
+    res.render('book/editbooks', {data:data});
   })
 });
 

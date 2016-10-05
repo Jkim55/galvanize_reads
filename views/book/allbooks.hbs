@@ -8,27 +8,25 @@
       </div>
 
       <div class="col-xs-6">
-        <h3>{{this.title}}</h3>
+        <h3>
+          <a href="/books/view/{{this.id}}">
+            {{this.title}}
+          </a>
+        </h3>
         <p>
           {{#each authorlist}}
           {{#if @last}}
-          {{firstname}} {{lastname}}
+            {{firstname}} {{lastname}}
           {{else}}
-          {{firstname}} {{lastname}} |
+            {{firstname}} {{lastname}} |
           {{/if}}
           {{/each}}
         </p>
-        <p>ID: {{this.id}}</p>
         <p>Genre: <span>{{this.genre}}</span></p>
         <p>Description: <span>{{this.description}}</span></p>
-
-
-
-        <a href="/books/edit/{{this.id}}"><button type="button" class="btn btn-primary btn-sm" name="edit">edit</button></a>
-
-        <a class="btn btn-danger btn-sm" href="/books/delete/{{this.id}}">Delete</a>
-
+        <a class="btn btn-primary btn-sm" href="/books/view/{{this.id}}">View Book Details</a>
       </div>
     </div>
     {{/each}}
+      <a class="btn btn-secondary btn-lg" href="/books/add">Add A Book</a>
 </div>

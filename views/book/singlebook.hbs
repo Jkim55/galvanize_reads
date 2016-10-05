@@ -1,7 +1,37 @@
-<section class='display-single'>
+<!-- <div class='display-single'>
   <h3>{{book.title}} -  {{book.id}}</h3>
   <img src="{{book.cover_url}}"/>
   <p>ID: {{book.id}}</p>
   <p>Genre: <span>{{book.genre}}</span></p>
   <p>Description: <span>{{book.description}}</span></p>
-</section>
+</div> -->
+
+
+<div class='row m-b-3 m-t-3'>
+  <div class="col-xs-4 test">
+    <img class="img-fluid" src="{{book.cover_url}}" alt="Pic" />
+  </div>
+
+  <div class="col-xs-6">
+    <h3>
+      {{book.title}}
+    </h3>
+    <p>
+      {{#each authors}}
+      {{#if @last}}
+      {{firstname}} {{lastname}}
+      {{else}}
+      {{firstname}} {{lastname}} |
+      {{/if}}
+      {{/each}}
+    </p>
+    <p>ID: {{book.id}}</p>
+    <p>Genre: <span>{{book.genre}}</span></p>
+    <p>Description: <span>{{book.description}}</span></p>
+
+    <a class="btn btn-primary btn-sm" href="/books/edit/{{book.id}}">Edit</a>
+    <a class="btn btn-danger btn-sm" href="/books/delete/{{book.id}}">Delete</a>
+    <!-- <a href="/books/edit/{{book.id}}"><button type="button" class="btn btn-primary btn-sm" name="edit">edit</button></a> -->
+
+  </div>
+</div>

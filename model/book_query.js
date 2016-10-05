@@ -51,6 +51,6 @@ module.exports = {
   getSingleBook: getSingleBook,
   getAuthorsByBookID: getAuthorsByBookID,
   addBook: addBook,
-  editBook:editBook,
+  editBook: editBook,
   deleteBook: deleteBook
 }

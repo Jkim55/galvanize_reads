@@ -16,7 +16,15 @@ div.index {
   margin-top: 10rem;
 }
 
+img.authors{
+  width: 15rem;
+}
+
 .test {
   /* equivalent of 1 col offset*/
   margin-left: 8.333333%;
+}
+
+a.footer {
+  color: rgba(0,0,0,.3);
 }
