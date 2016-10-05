@@ -4,7 +4,19 @@ const knex = require('./knex_config')
 
 function getAllAuthors (){
   return knex('author')
-  .orderBy('id', 'asc')
+  .orderBy('first_name', 'asc')
+}
+
+function getAuthorsByBookID(bookID) {
+  return knex('author')
+    .join('author_book', 'author_book.author_id', 'author.id')
+    .join('book', 'book.id', 'author_book.book_id')
+    .select(
+      'author.id as authorID',
+      'author.first_name as firstname',
+      'author.last_name as lastname'
+    )
+    .where('book.id', bookID)
 }
 
 function getSingleAuthor(AuthID){
@@ -42,6 +54,7 @@ function deleteAuthor(authorID) {
 
 module.exports = {
   getAllAuthors: getAllAuthors,
+  getAuthorsByBookID: getAuthorsByBookID,
   getSingleAuthor: getSingleAuthor,
   deleteAuthor: deleteAuthor,
   addAuthor: addAuthor,

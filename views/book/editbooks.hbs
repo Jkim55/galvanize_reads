@@ -1,29 +1,46 @@
 <!-- /books/edit/:id -->
 
-<form class="edit-book m-t-3" action="/books/edit/{{data.id}}" method="post">
+<form class="edit-book m-t-3" action="/books/edit/{{book.id}}" method="post">
   <div class="title">
     <label for="book-title">Title</label>
-    <input type="text" class="form-control" name='title' placeholder="Title" value="{{data.title}}">
+    <input type="text" class="form-control" name='title' placeholder="Title" value="{{book.title}}">
   </div>
 
   <div class="author">
-    <label for="book-author">Author</label>
-    <input type="text" class="form-control" name='author' placeholder="Author" value="{{data.author}}">
+    <!-- <label for="book-author">Author</label>
+    <input type="text" class="form-control" name='author' placeholder="Author"> -->
+    <div class="">
+      <label for="book-author">Author(s) Added</label>
+      Show Authors selected...
+    </div>
+    <label for="book-author">Authors</label>
+    <div class="dropdown authors">
+      <button class="btn btn-secondary form-control text-xs-left"
+      type="button" id="dropdownMenu1" data-toggle="dropdown"
+      aria-haspopup="true" aria-expanded="false">
+      Select Authors
+      </button>
+      <div class="dropdown-menu form-control" aria-labelledby="dropdownMenu1">
+        {{#each authors}}
+        <a class="dropdown-item" id="authors" href="/">{{this.first_name}} {{this.last_name}}</a>
+        {{/each}}
+      </div>
+    </div>
   </div>
 
   <div class="genre">
     <label for="book-genre">Genre</label>
-    <input type="text" class="form-control" name='genre' placeholder="Genre" value="{{data.genre}}">
+    <input type="text" class="form-control" name='genre' placeholder="Genre" value="{{book.genre}}">
   </div>
 
   <div class="cover_url">
     <label for="book-cover_url">Cover Image URL</label>
-    <input type="text" class="form-control" name='cover_url' placeholder="Cover URL" value="{{data.cover_url}}">
+    <input type="text" class="form-control" name='cover_url' placeholder="Cover URL" value="{{book.cover_url}}">
   </div>
 
   <div class="description">
     <label for="book-description">Description</label>
-    <input type="text" class="form-control" name='description' placeholder="Description" value="{{data.description}}">
+    <textarea class="form-control" name='description' rows="8" cols="40">{{book.description}}</textarea>
   </div>
   <br>
   <div>

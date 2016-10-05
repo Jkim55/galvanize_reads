@@ -12,20 +12,25 @@ router.get('/', (req, res, next) =>{
     .then((author) => {
       res.render('authors/allauthors', {author:author})
     })
+    .catch((err) => {
+      console.error('Error getting from database!')
+      next(err)
+    })
 })
 
 router.get('/view/:id', (req, res, next) => {
   let author = authorModel.getSingleAuthor(req.params.id)
   let books = bookModel.getBooksByAuthorID(req.params.id)
-    // .then((data) =>{
-    //   console.log(data);
-    // })
   Promise.all([author, books])
     .then((authorInfo) => {
       res.render('authors/singleauthor', {
         author:authorInfo[0],
         books:authorInfo[1]
       })
+    })
+    .catch((err) => {
+      console.error('Error getting from database!')
+      next(err)
     })
 })
 
@@ -38,12 +43,20 @@ router.post('/add', (req, res, next) => {
     .then(() => {
       res.redirect('/authors')
     })
+    .catch((err) => {
+      console.error('Error inserting into database!')
+      next(err)
+    })
 })
 
 router.get('/edit/:id', (req, res, next) => {
   authorModel.findAuthor(req.params.id)
   .then((author) => {
     res.render('authors/editauthor', {author:author})
+  })
+  .catch((err) => {
+    console.error('Error getting from database!')
+    next(err)
   })
 })
 
@@ -52,12 +65,20 @@ router.post('/edit/:id', (req, res, next) => {
     .then(() => {
       res.redirect('/authors')
     })
+    .catch((err) => {
+      console.error('Error inserting into database!')
+      next(err)
+    })
 })
 
 router.get('/delete/:id', (req, res, next) => {
   authorModel.deleteAuthor(req.params.id)
   .then((author) => {
     res.redirect('/authors')
+  })
+  .catch((err) => {
+    console.error('Error getting from database!')
+    next(err)
   })
 })
 
