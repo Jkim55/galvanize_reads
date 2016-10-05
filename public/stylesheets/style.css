@@ -20,10 +20,10 @@ img.authors{
   width: 15rem;
 }
 
-.test {
-  /* equivalent of 1 col offset*/
+/* equivalent of 1 col offset*/
+/*.test {
   margin-left: 8.333333%;
-}
+}*/
 
 a.footer {
   color: rgba(0,0,0,.3);

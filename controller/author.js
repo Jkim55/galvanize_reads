@@ -8,9 +8,14 @@ const bookModel = require('../model/book_query')
 
 
 router.get('/', (req, res, next) =>{
-  authorModel.getAllAuthors()
-    .then((author) => {
-      res.render('authors/allauthors', {author:author})
+  let authors = authorModel.getAllAuthors()
+  let count = authorModel.countOfAuthors()
+  Promise.all([authors, count])
+    .then((authorInfo) => {
+      res.render('authors/allauthors', {
+        authors:authorInfo[0],
+        authorCount: authorInfo[1]
+      })
     })
     .catch((err) => {
       console.error('Error getting from database!')

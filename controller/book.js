@@ -8,20 +8,26 @@ const authorModel = require('../model/author_query')
 
 // show all books
 router.get('/', (req, res, next) => {
-  bookModel.getAllBooks()
-  .then((book) => {
-    let bookwauthor = book.map((book) => {  // this is an array of
-      return authorModel.getAuthorsByBookID(book.id)
-        .then((author)=>{
-            book.authorlist = author;
-          return book
-        })
+  let books =   bookModel.getAllBooks()
+    .then((book) => {
+      let bookwauthor = book.map((book) => {
+        return authorModel.getAuthorsByBookID(book.id)
+          .then((author)=>{
+              book.authorlist = author;
+            return book
+          })
+      })
+      return Promise.all(bookwauthor)
     })
-    return Promise.all(bookwauthor)
-  })
-  .then((book)=>{
+  let count = bookModel.countOfBooks()
+  Promise.all([books,count])
+  .then((bookData)=>{
+    console.log(bookData[0]);
     // console.log(util.inspect(book, {depth:5})) // see more details on nested objs
-    res.render('book/allbooks', {book:book});
+    res.render('book/allbooks', {
+      books: bookData[0],
+      bookCount: bookData[1]
+    });
   })
   .catch((err) => {
     console.error('Error getting from database!')

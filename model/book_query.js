@@ -7,6 +7,12 @@ function getAllBooks (){
   .orderBy('id', 'asc')
 }
 
+function countOfBooks(){
+  return knex('book')
+  .count('id')
+  .first()
+}
+
 function getSingleBook(bookID) {
   return knex('book')
     .where('id', bookID).first()
@@ -48,6 +54,7 @@ function getBooksByAuthorID(authID) {
 
 module.exports = {
   getAllBooks: getAllBooks,
+  countOfBooks: countOfBooks,
   getBooksByAuthorID: getBooksByAuthorID,
   getSingleBook: getSingleBook,
   addBook: addBook,
