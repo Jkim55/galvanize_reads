@@ -1,15 +1,28 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: url(../images/library.jpeg) no-repeat;
+  background-color: white;
+  background-size:cover;
 }
 
 a {
   color: #00B7FF;
 }
 
+div.index-wrapper {
+  padding: 2rem;
+  background-color:rgba(211, 211, 211, 0.5);
+  box-shadow:0px 0px 10px 5px rgba(211, 211, 211, 0.5);
+}
+
 img.index {
   width: 6rem;
-  height: 6rem
+  height: 6rem;
+}
+
+h4.index {
+  color: rgba(0,0,0,.5);
 }
 
 div.index {

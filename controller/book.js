@@ -3,6 +3,8 @@
 const express = require('express');
 const router = express.Router();
 
+const util = require ('util') // to view depth nested promise (ln 27)
+
 const bookModel = require('../model/book_query')
 const authorModel = require('../model/author_query')
 
@@ -22,7 +24,6 @@ router.get('/', (req, res, next) => {
   let count = bookModel.countOfBooks()
   Promise.all([books,count])
   .then((bookData)=>{
-    console.log(bookData[0]);
     // console.log(util.inspect(book, {depth:5})) // see more details on nested objs
     res.render('book/allbooks', {
       books: bookData[0],
