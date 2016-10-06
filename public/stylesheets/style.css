@@ -1,9 +1,6 @@
 body {
-  padding: 50px;
+  padding: 0px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background: url(../images/library.jpeg) no-repeat;
-  background-color: white;
-  background-size:cover;
 }
 
 a {
@@ -11,9 +8,16 @@ a {
 }
 
 div.index-wrapper {
-  padding: 2rem;
+  background: url(../images/library.jpeg) no-repeat;
+  background-color: white;
+  background-size:cover;
+  background-position: center;
+  min-height: 100vh;
+  min-width: 100vw;
+
+  /*padding: 2rem;
   background-color:rgba(211, 211, 211, 0.5);
-  box-shadow:0px 0px 10px 5px rgba(211, 211, 211, 0.5);
+  box-shadow:0px 0px 10px 5px rgba(211, 211, 211, 0.5);*/
 }
 
 img.index {
@@ -38,6 +42,6 @@ img.authors{
   margin-left: 8.333333%;
 }*/
 
-a.footer {
-  color: rgba(0,0,0,.3);
+a.footer, p.footer {
+  color: rgba(0,0,0,.6);
 }
