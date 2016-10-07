@@ -7,6 +7,16 @@ function getAllAuthors (){
   .orderBy('first_name', 'asc')
 }
 
+function getAllAuthorsTruncated (){
+  return knex('author')
+  .orderBy('first_name', 'asc')
+  .select(
+    'author.id as authorID',
+    'author.first_name as firstname',
+    'author.last_name as lastname'
+  )
+}
+
 function countOfAuthors(){
   return knex('author')
   .count('id')
@@ -60,6 +70,7 @@ function deleteAuthor(authorID) {
 
 module.exports = {
   getAllAuthors: getAllAuthors,
+  getAllAuthorsTruncated: getAllAuthorsTruncated,
   countOfAuthors: countOfAuthors,
   getAuthorsByBookID: getAuthorsByBookID,
   getSingleAuthor: getSingleAuthor,

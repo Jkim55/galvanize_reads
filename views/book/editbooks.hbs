@@ -9,7 +9,7 @@
 
   <div class="existingAuthors">
     <label for="selectedAuths">Existing Author(s)</label>
-    <select multiple name="selected-authors" class="form-control" id="selectedAuths">
+    <select multiple name="selectedAuths" class="form-control" id="selectedAuths">
       {{#each existingAuthors}}
       <option id="{{this.id}}">
         {{this.first_name}} {{this.last_name}}
@@ -20,7 +20,7 @@
 
   <div class="authorSelector">
     <label for="choiceOfAuths">Author(s):</label>
-    <select multiple name="choiceOfAuths" class="form-control" id="choiceOfAuths">
+    <select name="choiceOfAuths" class="form-control" id="choiceOfAuths" required>
       {{#each allAuthors}}
       <option id="{{this.id}}">
         {{this.first_name}} {{this.last_name}}

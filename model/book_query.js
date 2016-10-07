@@ -18,12 +18,6 @@ function getSingleBook(bookID) {
     .where('id', bookID).first()
 }
 
-
-function addBook(bookInfo) {
-  return knex('book')
-    .insert(bookInfo)
-}
-
 function editBook(bookID, bookInfo) {
   return knex('book')
     .where('id', bookID)
@@ -57,7 +51,6 @@ module.exports = {
   countOfBooks: countOfBooks,
   getBooksByAuthorID: getBooksByAuthorID,
   getSingleBook: getSingleBook,
-  addBook: addBook,
   editBook: editBook,
   deleteBook: deleteBook
 }
