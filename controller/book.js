@@ -7,7 +7,6 @@ const util = require ('util') // to view depth nested promise (ln 27)
 
 const bookModel = require('../model/book_query')
 const authorModel = require('../model/author_query')
-
 // show all books
 router.get('/', (req, res, next) => {
   let books =   bookModel.getAllBooks()
@@ -66,6 +65,14 @@ router.get('/add', function(req, res, next) {
 });
 
 router.post('/add', function(req, res, next) {
+  console.log(req.body)
+  // let authors = $("#submit").on('click',function () {
+  //   let arrHTML = []
+  //   $(".singleAuthor").each(() => {
+  //     arrHTML.push($( this ).html())
+  //   })
+  // })
+
   let book = bookModel.addBook(req.body)
   // let author = authorModel.addauthor()
   // Promises.all([book, author]) // add res.render obj
@@ -78,6 +85,7 @@ router.post('/add', function(req, res, next) {
   })
 });
 
+
 router.get('/edit/:id', function (req, res, next) {
   let book = bookModel.getSingleBook (req.params.id)
   let authors = authorModel.getAllAuthors()
@@ -85,7 +93,7 @@ router.get('/edit/:id', function (req, res, next) {
   .then ((bookInfo) => {
     res.render('book/editbooks', {
       book:bookInfo[0],
-      author: bookInfo[1]
+      authors: bookInfo[1]
     });
   })
   .catch((err) => {
