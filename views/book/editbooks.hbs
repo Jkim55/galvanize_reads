@@ -11,8 +11,8 @@
     <label for="selectedAuths">Existing Author(s)</label>
     <select multiple name="selectedAuths" class="form-control" id="selectedAuths">
       {{#each existingAuthors}}
-      <option id="{{this.id}}">
-        {{this.first_name}} {{this.last_name}}
+      <option id="{{this.authorID}}">
+        {{this.firstname}} {{this.lastname}}
       </option>
       {{/each}}
     </select>
@@ -22,8 +22,8 @@
     <label for="choiceOfAuths">Author(s):</label>
     <select name="choiceOfAuths" class="form-control" id="choiceOfAuths" required>
       {{#each allAuthors}}
-      <option id="{{this.id}}">
-        {{this.first_name}} {{this.last_name}}
+      <option id="{{this.authorID}}">
+        {{this.firstname}} {{this.lastname}}
       </option>
       {{/each}}
     </select>

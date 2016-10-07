@@ -93,7 +93,8 @@ router.get('/edit/:id', function (req, res, next) {
   let allAuthors = authorModel.getAllAuthorsTruncated()
   Promise.all([book, bookAuthors, allAuthors])
   .then ((bookInfo) => {
-    console.log(bookInfo[2]);
+    console.log('bookauthors:', bookInfo[1]);
+    console.log('all authors:', bookInfo[2]);
     res.render('book/editbooks', {
       book:bookInfo[0],
       existingAuthors: bookInfo[1],
