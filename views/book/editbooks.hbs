@@ -1,6 +1,6 @@
 <!-- /books/edit/:id -->
 
-<form class="edit-book m-t-3" action="/books/edit/{{book.id}}" method="post">
+<form class="display-book" action="/books/edit/{{book.id}}" method="post">
   <div class="title">
     <label for="book-title">Title</label>
     <input type="text" class="form-control" name='title' placeholder="Title" value="{{book.title}}">
@@ -11,7 +11,7 @@
     <label for="selectedAuths">Existing Author(s)</label>
     <select multiple name="selectedAuths" class="form-control" id="selectedAuths">
       {{#each existingAuthors}}
-      <option id="{{this.authorID}}">
+      <option selected="true" id="{{this.authorID}}">
         {{this.firstname}} {{this.lastname}}
       </option>
       {{/each}}

@@ -7,17 +7,28 @@ a {
   color: #00B7FF;
 }
 
-div.index-wrapper {
+.container-fluid {
+  padding: 0
+}
+
+
+.index-wrapper {
   background: url(../images/library.jpeg) no-repeat;
   background-color: white;
   background-size:cover;
   background-position: center;
   min-height: 100vh;
   min-width: 100vw;
+  margin-left: 0px;
+  padding: 15%
+}
 
-  /*padding: 2rem;
-  background-color:rgba(211, 211, 211, 0.5);
-  box-shadow:0px 0px 10px 5px rgba(211, 211, 211, 0.5);*/
+.opacity-box {
+  margin: auto;
+  height: 15rem;
+  width: 40rem;
+  background-color:rgba(211, 211, 211, 0.8);
+  box-shadow:0px 0px 10px 5px rgba(211, 211, 211, 0.5);
 }
 
 img.index {
@@ -30,18 +41,24 @@ h4.index {
 }
 
 div.index {
-  margin-top: 10rem;
+  margin-top: 5%;
 }
 
 img.authors{
   width: 15rem;
 }
 
-/* equivalent of 1 col offset*/
-/*.test {
-  margin-left: 8.333333%;
-}*/
-
 a.footer, p.footer {
   color: rgba(0,0,0,.6);
+}
+
+.display-book, .display-author {
+  margin: 5%;
+}
+form > div {
+  margin-bottom: 1%;
+  margin-top: 1%
+}
+.authorOptionTag {
+  display: inline;
 }

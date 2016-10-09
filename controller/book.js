@@ -7,10 +7,11 @@ const util = require ('util') // to view depth nested promise (ln 27)
 
 const bookModel = require('../model/book_query')
 const authorModel = require('../model/author_query')
+const author_bookModel = require('../model/author_book_query')
 
 // show all books
 router.get('/', (req, res, next) => {
-  let books =   bookModel.getAllBooks()
+  let books = bookModel.getAllBooks()
     .then((book) => {
       let bookwauthor = book.map((book) => {
         return authorModel.getAuthorsByBookID(book.id)
@@ -55,6 +56,7 @@ router.get('/view/:id', function(req, res, next) {
 });
 
 router.get('/add', function(req, res, next) {
+
   authorModel.getAllAuthorsTruncated()
     .then((authors) => {
       res.render('book/addbooks', {authors: authors});
@@ -66,18 +68,20 @@ router.get('/add', function(req, res, next) {
 });
 
 router.post('/add', function(req, res, next) {
-  console.log(req.body)
-  // let authors = $("#submit").on('click',function () {
-  //   let arrHTML = []
-  //   $(".singleAuthor").each(() => {
-  //     arrHTML.push($( this ).html())
-  //   })
-  // })
-
-  let book = bookModel.addBook(req.body)
-  // let author = authorModel.addauthor()
-  // Promises.all([book, author]) // add res.render obj
-  .then (() => {
+  console.log('req.body', req.body)
+  // must capture authorID which is: $('select[name=choiceOfAuths] option:selected').attr("id")
+  author_bookModel.addNewBook(
+    req.body.title,
+    req.body.genre,
+    req.body.cover_url,
+    req.body.description
+  )
+  .then ((bookID) => {
+    console.log(bookID);
+    // let authors = iterate over array of authors & for every author invoke the below promise.
+    // author_bookModel.addNewBookAuthor(bookID, authorID)
+  })
+  .then(() => {
     res.redirect('/books')
   })
   .catch((err) => {
@@ -86,15 +90,12 @@ router.post('/add', function(req, res, next) {
   })
 });
 
-// add existing authors into render page
 router.get('/edit/:id', function (req, res, next) {
   let book = bookModel.getSingleBook (req.params.id)
   let bookAuthors = authorModel.getAuthorsByBookID(req.params.id)
   let allAuthors = authorModel.getAllAuthorsTruncated()
   Promise.all([book, bookAuthors, allAuthors])
   .then ((bookInfo) => {
-    console.log('bookauthors:', bookInfo[1]);
-    console.log('all authors:', bookInfo[2]);
     res.render('book/editbooks', {
       book:bookInfo[0],
       existingAuthors: bookInfo[1],

@@ -2,9 +2,23 @@
 
 const knex = require('./knex_config')
 
-function addBookWithAuthor(){
-
+function addNewBook(title, genre, cover_url, description){
+  return knex('book')
+    .insert({
+      'title': title,
+      'genre': genre,
+      'cover_url': cover_url,
+      'description': description
+    })
+    .returning('id')
 }
+
+// get authorID
+function addNewBookAuthor(bookID, authorID){
+  return knex('author_book')
+    .insert(bookID, authorID)
+}
+
 
 // knex.insert({
 //   first_name: firstName,
@@ -19,5 +33,6 @@ function addBookWithAuthor(){
 // });
 
 module.exports = {
-  addBook: addBookWithAuthor,
+  addNewBook: addNewBook,
+  addNewBookAuthor: addNewBookAuthor
 }

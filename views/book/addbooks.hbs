@@ -1,17 +1,20 @@
 <!-- /books/add -->
 
-<form class="add-book m-t-3" action="/books/add" method="post">
+<form class="display-book" action="/books/add" method="post">
+  <fieldset>
   <div class="title">
     <label for="book-title">Title</label>
     <input type="text" class="form-control" name='title' placeholder="Title" id="book-title" required>
   </div>
 
+<div class="form-group" enctype="multipart/form-data">
   <div class="addedAuthors">
     <label for="selectedAuths">Author(s) Added</label>
     <select multiple name="selectedAuths" class="form-control" id="selectedAuths">
-      <!-- WHERE INSERTED AUTHORS WILL GO -->
+      <!-- WHERE SELECTED AUTHORS WILL GO -->
     </select>
   </div>
+</div>
 
   <div class="authorSelector">
     <label for="choiceOfAuths">Author(s):</label>
@@ -42,4 +45,5 @@
   <div>
     <input class="btn btn-info longbtn" type="submit" value="Add Book">
   </div>
+</fieldset>
 </form>
