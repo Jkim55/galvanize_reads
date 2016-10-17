@@ -48,17 +48,22 @@ img.authors{
   width: 15rem;
 }
 
-a.footer, p.footer {
+a.footer,
+p.footer {
   color: rgba(0,0,0,.6);
 }
 
-.display-book, .display-author {
+/* seperate comma with new line*/
+.display-book,
+.display-author {
   margin: 5%;
 }
+
 form > div {
   margin-bottom: 1%;
   margin-top: 1%
 }
+
 .authorOptionTag {
   display: inline;
 }
